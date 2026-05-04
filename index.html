@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiuseBee - Mật ong nguyên chất</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Header */
+        .header {
+            background-color: #dc2628;
+            padding: 10px 0;
+            color: white;
+            font-size: 12px;
+        }
+
+        .header-top {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .header-left, .header-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-left a, .header-right a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #dc2628;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .search-bar {
+            flex: 1;
+            margin: 0 30px;
+            max-width: 300px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .search-bar button {
+            background-color: #dc2628;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin-left: -32px;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #dc2628;
+        }
+
+        /* Banner */
+        .banner {
+            background: linear-gradient(135deg, #FFA500 0%, #FFD700 50%, #FFA500 100%);
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .banner-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .banner-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner-content {
+            flex: 1;
+            color: white;
+        }
+
+        .banner-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .banner-btn {
+            background-color: #FFA500;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .banner-btn:hover {
+            background-color: #FF8C00;
+        }
+
+        .banner-discount {
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        /* Featured Products Section */
+        .featured-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            color: #dc2628;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            border: 2px solid #FFC0CB;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #E91E63;
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-name {
+            font-size: 14px;
+            color: #E91E63;
+            margin-bottom: 8px;
+            min-height: 40px;
+        }
+
+        .product-old-price {
+            font-size: 12px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #E91E63;
+            margin-bottom: 12px;
+        }
+
+        .product-btn {
+            width: 100%;
+            background-color: #dc2628;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product-btn:hover {
+            background-color: #B01F21;
+        }
+
+        /* View More Section */
+        .view-more {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .view-more-link {
+            color: #FFA500;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #FFA500;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-section a:hover {
+            color: #FFA500;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .banner {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .banner-title {
+                font-size: 24px;
+            }
+
+            .banner-discount {
+                font-size: 36px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-top">
+            <div class="header-left">
+                <span>Chào mừng bạn đến với mua sắm của Webbemo</span>
+            </div>
+            <div class="header-right">
+                <a href="#">Tài khoản</a>
+                <a href="#">Thanh toán</a>
+                <a href="#">Giỏ hàng</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <div class="logo-icon">🐝</div>
+                <div>
+                    <div style="font-size: 18px;">GiuseBee</div>
+                    <div style="font-size: 11px; color: #999;">Mật ong nguyên chất</div>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm...">
+                <button>🔍</button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Sản phẩm</a></li>
+                <li><a href="#">Thanh toán</a></li>
+                <li><a href="#">Gói dịch vụ</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Banner -->
+    <div class="banner">
+        <div class="banner-image">
+            <div style="font-size: 80px;">🍯</div>
+        </div>
+        <div class="banner-content">
+            <div style="color: #FFA500; font-size: 14px; margin-bottom: 10px;">🎁 QUA TỪ TIÊU NHIỄM</div>
+            <div class="banner-title">Mật ong nguyên chất</div>
+            <button class="banner-btn">↳ Xem chi tiết</button>
+            <div class="banner-discount">Giảm đến<br>40%</div>
+        </div>
+    </div>
+
+    <!-- Featured Products -->
+    <div class="featured-section">
+        <h2 class="section-title">SẢN PHẨM CỦA CHÚNG TÔI</h2>
+        <p class="section-subtitle">Là một ông tây tú rung Ú Mình và Tây Nguyên hưng vị</p>
+
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-badge">-5%</div>
+                <img src="https://via.placeholder.com/200x200/FFA500/FFFFFF?text=Honey+1" alt="Product" class="product-image">
+                <div class="product-name">Mật ong hoa đẹp hot 1 lít</div>
+                <div class="product-old-price">giá gốc 620.000đ</div>
+                <div class="product-price">620.000đ</div>
+                <button class="product-btn">Mua ngay</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-badge">-5%</div>
+                <img src="https://via.placeholder.com/200x200/FFD700/FFFFFF?text=Honey+2" alt="Product" class="product-image">
+                <div class="product-name">Sữa ong chua năm 2019</div>
+                <div class="product-old-price">giá gốc</div>
+                <div class="product-price">630.000đ</div>
+                <button class="product-btn">Mua ngay</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-badge">-19%</div>
+                <img src="https://via.placeholder.com/200x200/FFA500/FFFFFF?text=Honey+3" alt="Product" class="product-image">
+                <div class="product-name">Sáp ong nguyên chất</div>
+                <div class="product-old-price">giá gốc</div>
+                <div class="product-price">350.000đ</div>
+                <button class="product-btn">Mua ngay</button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-badge">-8%</div>
+                <img src="https://via.placeholder.com/200x200/FFD700/FFFFFF?text=Honey+4" alt="Product" class="product-image">
+                <div class="product-name">Mật ong rung ủi chế 2 lít</div>
+                <div class="product-old-price">giá gốc</div>
+                <div class="product-price">632.000đ</div>
+                <button class="product-btn">Mua ngay</button>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-badge">-11%</div>
+                <img src="https://via.placeholder.com/200x200/FFA500/FFFFFF?text=Honey+5" alt="Product" class="product-image">
+                <div class="product-name">Mật ông ông lúa 1 - thắp chế 1 lít</div>
+                <div class="product-old-price">giá gốc</div>
+                <div class="product-price">320.000đ</div>
+                <button class="product-btn">Mua ngay</button>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-badge">-7%</div>
+                <img src="https://via.placeholder.com/200x200/FFD700/FFFFFF?text=Honey+6" alt="Product" class="product-image">
+                <div class="product-name">Mật ông ông túa đắc bàn chế 1 lít</div>
+                <div class="product-old-price">giá gốc</div>
+                <div class="product-price">420.000đ</div>
+                <button class="product-btn">Mua ngay</button>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-badge">-8%</div>
+                <img src="https://via.placeholder.com/200x200/FFA500/FFFFFF?text=Honey+7" alt="Product" class="product-image">
+                <div class="product-name">Mật ông ông lúa 2 chế 1 lít</div>
+                <div class="product-old-price">giá gốc</div>
+                <div class="product-price">600.000đ</div>
+                <button class="product-btn">Mua ngay</button>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+                <div class="product-badge">-10%</div>
+                <img src="https://via.placeholder.com/200x200/FFD700/FFFFFF?text=Honey+8" alt="Product" class="product-image">
+                <div class="product-name">Mật ông ông nguyên chất</div>
+                <div class="product-old-price">giá gốc</div>
+                <div class="product-price">180.000đ</div>
+                <button class="product-btn">Mua ngay</button>
+            </div>
+        </div>
+
+        <div class="view-more">
+            <a href="#" class="view-more-link">← Xem thêm</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về chúng tôi</h3>
+                <a href="#">Giới thiệu công ty</a>
+                <a href="#">Tiêu chuẩn chất lượng</a>
+                <a href="#">Công nghệ sản xuất</a>
+            </div>
+            <div class="footer-section">
+                <h3>Sản phẩm</h3>
+                <a href="#">Mật ong nguyên chất</a>
+                <a href="#">Sữa ong chua</a>
+                <a href="#">Sáp ong</a>
+                <a href="#">Phấn hoa</a>
+            </div>
+            <div class="footer-section">
+                <h3>Hỗ trợ khách hàng</h3>
+                <a href="#">Câu hỏi thường gặp</a>
+                <a href="#">Hướng dẫn mua hàng</a>
+                <a href="#">Chính sách giao hàng</a>
+                <a href="#">Liên hệ</a>
+            </div>
+            <div class="footer-section">
+                <h3>Kết nối với chúng tôi</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+                <a href="#">Email</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 GiuseBee - Mật ong nguyên chất. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
